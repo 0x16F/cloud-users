@@ -1,6 +1,7 @@
 package errors
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/0x16F/cloud/users/pkg/logger"
@@ -8,7 +9,7 @@ import (
 )
 
 type Errors struct {
-	errors map[int]customError
+	errors map[int]Error
 }
 
 func New(log logger.Logger, errorsPath string) Errors {
@@ -17,7 +18,7 @@ func New(log logger.Logger, errorsPath string) Errors {
 	})
 
 	service := Errors{
-		errors: make(map[int]customError),
+		errors: make(map[int]Error),
 	}
 
 	data, err := os.ReadFile(errorsPath)
@@ -27,7 +28,7 @@ func New(log logger.Logger, errorsPath string) Errors {
 		return service
 	}
 
-	var errors []customError
+	var errors []Error
 	if err := json.Unmarshal(data, &errors); err != nil {
 		log.Errorf("failed to unmarshal errors: %v", err)
 
@@ -41,24 +42,26 @@ func New(log logger.Logger, errorsPath string) Errors {
 	return service
 }
 
-type customError struct {
+type Error struct {
 	Code        int    `json:"code"`
+	HttpCode    int    `json:"-"`
 	Message     string `json:"message"`
 	Description string `json:"description"`
 }
 
-func (ce customError) Error() string {
+func (ce Error) Error() string {
 	encoded, _ := json.Marshal(ce)
 	return string(encoded)
 }
 
 func (e Errors) GetError(code int) error {
 	if err, ok := e.errors[code]; ok {
-		return err
+		return &err
 	}
 
-	return customError{
-		Code:    0,
-		Message: "Unknown error",
+	return &Error{
+		Code:     0,
+		HttpCode: http.StatusInternalServerError,
+		Message:  "Unknown error",
 	}
 }
