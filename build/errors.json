@@ -1,0 +1,62 @@
+[
+  {
+    "code": 1000,
+    "message": "Invalid body",
+    "description": "The body of the request is invalid"
+},
+{
+    "code": 1001,
+    "message": "Invalid ID",
+    "description": "The provided ID is invalid"
+},
+{
+    "code": 1002,
+    "message": "Invalid email",
+    "description": "The provided email is invalid"
+},
+{
+    "code": 1003,
+    "message": "Invalid username",
+    "description": "The provided username is invalid"
+},
+{
+    "code": 1004,
+    "message": "Invalid password",
+    "description": "The provided password is invalid"
+},
+{
+    "code": 1005,
+    "message": "Invalid old password",
+    "description": "The provided old password is invalid"
+},
+{
+    "code": 1006,
+    "message": "Invalid new password",
+    "description": "The provided new password is invalid"
+},
+{
+    "code": 1007,
+    "message": "Internal error",
+    "description": "An internal error occurred"
+},
+{
+    "code": 1008,
+    "message": "Invalid query",
+    "description": "The provided query is invalid"
+},
+{
+    "code": 1009,
+    "message": "User not found",
+    "description": "The requested user was not found"
+},
+{
+    "code": 1010,
+    "message": "Email already exists",
+    "description": "The provided email already exists"
+},
+{
+    "code": 1011,
+    "message": "Username already exists",
+    "description": "The provided username already exists"
+}
+]
