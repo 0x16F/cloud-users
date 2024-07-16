@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/0x16F/cloud/users/internal/infrastructure/repo"
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/logger"
+	"github.com/0x16F/cloud-users/internal/infrastructure/repo"
 	"github.com/ilyakaznacheev/cleanenv"
 )
 

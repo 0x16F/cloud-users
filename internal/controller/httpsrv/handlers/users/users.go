@@ -4,9 +4,9 @@ import (
 	"context"
 	"strconv"
 
-	"github.com/0x16F/cloud/users/internal/entity"
-	"github.com/0x16F/cloud/users/pkg/codes"
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/logger"
+	"github.com/0x16F/cloud-users/internal/entity"
+	"github.com/0x16F/cloud-users/pkg/codes"
 	"github.com/gofiber/fiber/v2"
 )
 

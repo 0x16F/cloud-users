@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/0x16F/cloud/users/internal/entity"
+	"github.com/0x16F/cloud-users/internal/entity"
 	"github.com/huandu/go-sqlbuilder"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"

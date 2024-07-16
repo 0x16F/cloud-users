@@ -4,10 +4,10 @@ import (
 	"context"
 	"errors"
 
-	"github.com/0x16F/cloud/users/internal/entity"
-	"github.com/0x16F/cloud/users/pkg/codes"
-	"github.com/0x16F/cloud/users/pkg/generator"
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/generator"
+	"github.com/0x16F/cloud-common/pkg/logger"
+	"github.com/0x16F/cloud-users/internal/entity"
+	"github.com/0x16F/cloud-users/pkg/codes"
 	"github.com/jackc/pgx/v5"
 )
 
