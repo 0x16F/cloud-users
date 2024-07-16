@@ -1,7 +1,7 @@
 package entity
 
 import (
-	"github.com/0x16F/cloud/users/pkg/generator"
+	"github.com/0x16F/cloud-common/pkg/generator"
 )
 
 const (

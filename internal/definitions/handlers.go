@@ -1,10 +1,10 @@
 package definitions
 
 import (
-	"github.com/0x16F/cloud/users/internal/controller/httpsrv/handlers/users"
-	"github.com/0x16F/cloud/users/internal/usecase/errors"
-	usersService "github.com/0x16F/cloud/users/internal/usecase/users"
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/logger"
+	"github.com/0x16F/cloud-users/internal/controller/httpsrv/handlers/users"
+	"github.com/0x16F/cloud-users/internal/usecase/errors"
+	usersService "github.com/0x16F/cloud-users/internal/usecase/users"
 	"github.com/sarulabs/di"
 )
 

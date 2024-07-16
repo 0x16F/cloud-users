@@ -3,7 +3,7 @@ package definitions
 import (
 	"context"
 
-	"github.com/0x16F/cloud/users/internal/infrastructure/repo/users"
+	"github.com/0x16F/cloud-users/internal/infrastructure/repo/users"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/sarulabs/di"
 )

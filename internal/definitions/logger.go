@@ -1,8 +1,8 @@
 package definitions
 
 import (
-	"github.com/0x16F/cloud/users/internal/usecase/config"
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/logger"
+	"github.com/0x16F/cloud-users/internal/usecase/config"
 	"github.com/sarulabs/di"
 )
 

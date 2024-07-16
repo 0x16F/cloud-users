@@ -5,10 +5,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/0x16F/cloud/users/internal/controller/httpsrv"
-	"github.com/0x16F/cloud/users/internal/definitions"
-	"github.com/0x16F/cloud/users/internal/usecase/config"
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/logger"
+	"github.com/0x16F/cloud-users/internal/controller/httpsrv"
+	"github.com/0x16F/cloud-users/internal/definitions"
+	"github.com/0x16F/cloud-users/internal/usecase/config"
 )
 
 func main() {

@@ -1,6 +1,6 @@
 package users
 
-import "github.com/0x16F/cloud/users/internal/entity"
+import "github.com/0x16F/cloud-users/internal/entity"
 
 type UpdatePasswordReq struct {
 	OldPassword string `json:"old_password"`

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/0x16F/cloud/users/pkg/logger"
+	"github.com/0x16F/cloud-common/pkg/logger"
 	"github.com/goccy/go-json"
 )
 

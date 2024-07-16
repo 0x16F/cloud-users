@@ -1,8 +1,8 @@
 package definitions
 
 import (
-	"github.com/0x16F/cloud/users/internal/controller/httpsrv"
-	"github.com/0x16F/cloud/users/internal/controller/httpsrv/handlers/users"
+	"github.com/0x16F/cloud-users/internal/controller/httpsrv"
+	"github.com/0x16F/cloud-users/internal/controller/httpsrv/handlers/users"
 	"github.com/sarulabs/di"
 )
 

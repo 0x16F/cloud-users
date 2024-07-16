@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	cerrors "github.com/0x16F/cloud/users/internal/usecase/errors"
+	cerrors "github.com/0x16F/cloud-users/internal/usecase/errors"
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"

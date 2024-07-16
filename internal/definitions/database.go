@@ -3,9 +3,9 @@ package definitions
 import (
 	"context"
 
-	"github.com/0x16F/cloud/users/internal/infrastructure/repo"
-	"github.com/0x16F/cloud/users/internal/usecase/config"
-	"github.com/0x16F/cloud/users/internal/usecase/migrations"
+	"github.com/0x16F/cloud-users/internal/infrastructure/repo"
+	"github.com/0x16F/cloud-users/internal/usecase/config"
+	"github.com/0x16F/cloud-users/internal/usecase/migrations"
 	"github.com/sarulabs/di"
 )
 
