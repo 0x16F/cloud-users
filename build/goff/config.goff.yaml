@@ -1,0 +1,13 @@
+# Just an example file of go feature flags
+
+get_users:
+  variations:
+    enabled: true
+    disabled: false
+  targeting:
+    - query: login eq "bob"
+      variation: enabled
+    - query: role eq "admin"
+      variation: enabled
+  defaultRule:
+    variation: disabled
