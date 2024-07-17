@@ -29,6 +29,11 @@ type GetUsersParams struct {
 	Email    string
 }
 
+type UserData struct {
+	Login string
+	Role  string
+}
+
 func NewUser(dto UserCreateDTO) User {
 	salt := generator.NewString(SaltLength)
 	password := generator.NewHash(dto.Password, salt)

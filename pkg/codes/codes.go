@@ -13,4 +13,5 @@ const (
 	UserNotFound          = 1009
 	EmailAlreadyExists    = 1010
 	UsernameAlreadyExists = 1011
+	FeatureIsDisabled     = 1012
 )

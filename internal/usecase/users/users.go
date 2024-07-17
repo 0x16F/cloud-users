@@ -33,7 +33,7 @@ type Service struct {
 	errorsService ErrorsService
 }
 
-func NewService(log logger.Logger, usersRepo UsersRepository, errorsService ErrorsService) *Service {
+func New(log logger.Logger, usersRepo UsersRepository, errorsService ErrorsService) *Service {
 	return &Service{
 		log:           log,
 		usersRepo:     usersRepo,

@@ -22,7 +22,7 @@ func main() {
 	log, _ := container.Get(definitions.LoggerDef).(logger.Logger)
 
 	go func() {
-		if err := server.Start(cfg.WebServer.Port); err != nil {
+		if err := server.Start(cfg.App.Port); err != nil {
 			log.Fatalf("failed to start server: %v", err)
 		}
 	}()

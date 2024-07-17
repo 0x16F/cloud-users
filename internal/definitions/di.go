@@ -14,12 +14,20 @@ func New() (di.Container, error) {
 		getContextDef(),
 		getConfigDef(),
 		getLoggerDef(),
-		getErrorsServiceDef(),
+
+		getFFlagsProviderDef(),
+		getFFlagsClientDef(),
+
 		getDatabaseDef(),
 		getUsersRepoDef(),
+
+		getErrorsServiceDef(),
 		getUsersServiceDef(),
-		getUsersHandlerDef(),
+		getFFlagsServiceDef(),
+
 		getHTTPServerDef(),
+		getUsersHandlerDef(),
+		getFeaturesServiceDef(),
 	}...); err != nil {
 		return nil, err
 	}

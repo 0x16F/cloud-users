@@ -70,5 +70,11 @@
         "message": "Username already exists",
         "description": "The provided username already exists",
         "http_code": 409
+    },
+    {
+        "code": 1012,
+        "message": "Feature is disabled",
+        "description": "The requested feature is disabled",
+        "http_code": 403
     }
 ]
