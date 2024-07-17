@@ -29,7 +29,7 @@ func main() {
 
 	run()
 
-	container.Delete()
+	_ = container.Delete()
 }
 
 func run() {
