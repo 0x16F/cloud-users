@@ -24,24 +24,39 @@ type ErrorsService interface {
 	GetError(code int) error
 }
 
-type Handler struct {
-	log           logger.Logger
-	usersService  UsersService
-	errorsService ErrorsService
+type FeaturesService interface {
+	IsFeatureEnabled(c *fiber.Ctx, log logger.Logger, handlerName string) error
 }
 
-func NewHandler(log logger.Logger, usersService UsersService, errorsService ErrorsService) *Handler {
+type Handler struct {
+	log             logger.Logger
+	usersService    UsersService
+	errorsService   ErrorsService
+	featuresService FeaturesService
+}
+
+func NewHandler(
+	log logger.Logger,
+	usersService UsersService,
+	errorsService ErrorsService,
+	featuresService FeaturesService,
+) *Handler {
 	return &Handler{
-		log:           log,
-		usersService:  usersService,
-		errorsService: errorsService,
+		log:             log,
+		usersService:    usersService,
+		errorsService:   errorsService,
+		featuresService: featuresService,
 	}
 }
 
-func (h *Handler) createUser(c *fiber.Ctx) error {
+func (h *Handler) CreateUser(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "CreateUser",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "create_user"); err != nil {
+		return err
+	}
 
 	var req entity.UserCreateDTO
 
@@ -61,10 +76,14 @@ func (h *Handler) createUser(c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
-func (h *Handler) getUser(c *fiber.Ctx) error {
+func (h *Handler) GetUser(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "GetUser",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "get_user"); err != nil {
+		return err
+	}
 
 	id, err := strconv.ParseUint(c.Params("id"), 10, 64)
 	if err != nil {
@@ -83,10 +102,14 @@ func (h *Handler) getUser(c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
-func (h *Handler) getUsers(c *fiber.Ctx) error {
+func (h *Handler) GetUsers(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "GetUsers",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "get_users"); err != nil {
+		return err
+	}
 
 	var req GetUsersReq
 
@@ -115,10 +138,14 @@ func (h *Handler) getUsers(c *fiber.Ctx) error {
 	})
 }
 
-func (h *Handler) updateEmail(c *fiber.Ctx) error {
+func (h *Handler) UpdateEmail(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "UpdateEmail",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "update_email"); err != nil {
+		return err
+	}
 
 	id, err := strconv.ParseUint(c.Params("id"), 10, 64)
 	if err != nil {
@@ -144,10 +171,14 @@ func (h *Handler) updateEmail(c *fiber.Ctx) error {
 	return nil
 }
 
-func (h *Handler) updateUsername(c *fiber.Ctx) error {
+func (h *Handler) UpdateUsername(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "UpdateUsername",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "update_username"); err != nil {
+		return err
+	}
 
 	id, err := strconv.ParseUint(c.Params("id"), 10, 64)
 	if err != nil {
@@ -173,10 +204,14 @@ func (h *Handler) updateUsername(c *fiber.Ctx) error {
 	return nil
 }
 
-func (h *Handler) updatePassword(c *fiber.Ctx) error {
+func (h *Handler) UpdatePassword(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "UpdatePassword",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "update_password"); err != nil {
+		return err
+	}
 
 	id, err := strconv.ParseUint(c.Params("id"), 10, 64)
 	if err != nil {
@@ -202,10 +237,14 @@ func (h *Handler) updatePassword(c *fiber.Ctx) error {
 	return nil
 }
 
-func (h *Handler) deleteUser(c *fiber.Ctx) error {
+func (h *Handler) DeleteUser(c *fiber.Ctx) error {
 	log := h.log.WithFields(logger.Fields{
 		"method": "DeleteUser",
 	})
+
+	if err := h.featuresService.IsFeatureEnabled(c, log, "delete_user"); err != nil {
+		return err
+	}
 
 	id, err := strconv.ParseUint(c.Params("id"), 10, 64)
 	if err != nil {
@@ -221,14 +260,4 @@ func (h *Handler) deleteUser(c *fiber.Ctx) error {
 	}
 
 	return nil
-}
-
-func (h *Handler) RegisterRoutes(group fiber.Router) {
-	group.Get("/", h.getUsers)
-	group.Get("/:id", h.getUser)
-	group.Post("/", h.createUser)
-	group.Patch("/:id/email", h.updateEmail)
-	group.Patch("/:id/username", h.updateUsername)
-	group.Patch("/:id/password", h.updatePassword)
-	group.Delete("/:id", h.deleteUser)
 }

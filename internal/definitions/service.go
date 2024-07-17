@@ -5,13 +5,16 @@ import (
 	"github.com/0x16F/cloud-users/internal/infrastructure/repo/users"
 	"github.com/0x16F/cloud-users/internal/usecase/config"
 	"github.com/0x16F/cloud-users/internal/usecase/errors"
+	"github.com/0x16F/cloud-users/internal/usecase/fflags"
 	usersService "github.com/0x16F/cloud-users/internal/usecase/users"
+	"github.com/open-feature/go-sdk/openfeature"
 	"github.com/sarulabs/di"
 )
 
 const (
 	UsersServiceDef  = "users_service"
 	ErrorsServiceDef = "errors_service"
+	FFlagsServiceDef = "fflags_service"
 )
 
 func getUsersServiceDef() di.Def {
@@ -23,7 +26,7 @@ func getUsersServiceDef() di.Def {
 			usersRepo, _ := ctn.Get(UsersRepoDef).(*users.Repo)
 			errorsService, _ := ctn.Get(ErrorsServiceDef).(errors.Errors)
 
-			return usersService.NewService(log, usersRepo, errorsService), nil
+			return usersService.New(log, usersRepo, errorsService), nil
 		},
 	}
 }
@@ -37,6 +40,18 @@ func getErrorsServiceDef() di.Def {
 			cfg, _ := ctn.Get(ConfigDef).(*config.Config)
 
 			return errors.New(log, cfg.App.ErrorsPath), nil
+		},
+	}
+}
+
+func getFFlagsServiceDef() di.Def {
+	return di.Def{
+		Name:  FFlagsServiceDef,
+		Scope: di.App,
+		Build: func(ctn di.Container) (interface{}, error) {
+			client, _ := ctn.Get(FFlagsClientDef).(*openfeature.Client)
+
+			return fflags.New(client), nil
 		},
 	}
 }

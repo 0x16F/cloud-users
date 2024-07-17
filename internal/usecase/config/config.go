@@ -6,20 +6,18 @@ import (
 	"github.com/ilyakaznacheev/cleanenv"
 )
 
-type WebServer struct {
-	Port uint16 `env:"APP_PORT" env-default:"8080"`
-}
-
 type App struct {
+	Port           uint16             `env:"WEB_PORT" env-default:"8080"`
+	Name           string             `env:"APP_NAME" env-default:"cloud-users"`
 	ErrorsPath     string             `env:"ERRORS_PATH"`
 	MigrationsPath string             `env:"MIGRATIONS_PATH"`
 	Level          logger.LoggerLevel `env:"LOGGER_LEVEL" env-default:"info"`
+	ProxyEndpoint  string             `env:"FFLAGS_ENDPOINT" env-default:"http://localhost:1031"`
 }
 
 type Config struct {
-	WebServer WebServer
-	Database  repo.Config
-	App       App
+	Database repo.Config
+	App      App
 }
 
 func New() (*Config, error) {

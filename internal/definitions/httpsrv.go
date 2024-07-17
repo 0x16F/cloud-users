@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	HTTPServerDef = "http-server"
+	HTTPServerDef = "http_server"
 )
 
 func getHTTPServerDef() di.Def {
@@ -15,12 +15,23 @@ func getHTTPServerDef() di.Def {
 		Name:  HTTPServerDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
+			usersHandler, _ := ctn.Get(UsersHandlerDef).(*users.Handler)
+
 			server := httpsrv.NewServer()
 
-			api := server.App.Group("/api/v1")
-
-			usersHandler, _ := ctn.Get(UsersHandlerDef).(*users.Handler)
-			usersHandler.RegisterRoutes(api.Group("/users"))
+			v1 := server.App.Group("/api/v1")
+			{
+				users := v1.Group("/users")
+				{
+					users.Get("/", usersHandler.GetUsers)
+					users.Get("/:id", usersHandler.GetUser)
+					users.Post("/", usersHandler.CreateUser)
+					users.Patch("/:id/email", usersHandler.UpdateEmail)
+					users.Patch("/:id/username", usersHandler.UpdateUsername)
+					users.Patch("/:id/password", usersHandler.UpdatePassword)
+					users.Delete("/:id", usersHandler.DeleteUser)
+				}
+			}
 
 			return server, nil
 		},
