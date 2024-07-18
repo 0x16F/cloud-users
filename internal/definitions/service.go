@@ -8,7 +8,7 @@ import (
 	"github.com/0x16F/cloud-users/internal/usecase/fflags"
 	usersService "github.com/0x16F/cloud-users/internal/usecase/users"
 	"github.com/open-feature/go-sdk/openfeature"
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 const (
@@ -17,8 +17,8 @@ const (
 	FFlagsServiceDef = "fflags_service"
 )
 
-func getUsersServiceDef() di.Def {
-	return di.Def{
+func getUsersServiceDef() *di.Def {
+	return &di.Def{
 		Name:  UsersServiceDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
@@ -31,8 +31,8 @@ func getUsersServiceDef() di.Def {
 	}
 }
 
-func getErrorsServiceDef() di.Def {
-	return di.Def{
+func getErrorsServiceDef() *di.Def {
+	return &di.Def{
 		Name:  ErrorsServiceDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
@@ -44,8 +44,8 @@ func getErrorsServiceDef() di.Def {
 	}
 }
 
-func getFFlagsServiceDef() di.Def {
-	return di.Def{
+func getFFlagsServiceDef() *di.Def {
+	return &di.Def{
 		Name:  FFlagsServiceDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {

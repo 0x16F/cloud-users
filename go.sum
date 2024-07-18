@@ -92,6 +92,8 @@ github.com/rogpeppe/go-internal v1.12.0 h1:exVL4IDcn6na9z1rAb56Vxr+CgyK3nn3O+epU
 github.com/rogpeppe/go-internal v1.12.0/go.mod h1:E+RYuTGaKKdloAfM02xzb0FW3Paa99yedzYV+kq4uf4=
 github.com/sarulabs/di v2.0.0+incompatible h1:gsiKbengnJvdA+XkdV7SqlH3kFQMaIqKD+rgefIRwS0=
 github.com/sarulabs/di v2.0.0+incompatible/go.mod h1:w5YAFs2sBoVzwDsWaBqJ2NzOmUHo/EZKdB3DOJ+BmHI=
+github.com/sarulabs/di/v2 v2.5.1 h1:3b/4R0F6XYH6hdBLftnBy522LDMHz4ffk0kfuKQAxWs=
+github.com/sarulabs/di/v2 v2.5.1/go.mod h1:u+6Y0O5XqKzzjLz2zXdqxgfO1TnEYivLVqgScAgKQa8=
 github.com/sethvargo/go-retry v0.2.4 h1:T+jHEQy/zKJf5s95UkguisicE0zuF9y7+/vgz08Ocec=
 github.com/sethvargo/go-retry v0.2.4/go.mod h1:1afjQuvh7s4gflMObvjLPaWgluLLyhA1wmVZ6KLpICw=
 github.com/sirupsen/logrus v1.9.3 h1:dueUQJ1C2q9oE3F7wvmSGAaVtTmUizReu6fjN8uqzbQ=

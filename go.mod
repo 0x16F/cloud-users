@@ -52,6 +52,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/pressly/goose/v3 v3.21.1
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/sarulabs/di/v2 v2.5.1
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.55.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect

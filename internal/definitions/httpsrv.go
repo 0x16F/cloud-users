@@ -3,15 +3,15 @@ package definitions
 import (
 	"github.com/0x16F/cloud-users/internal/controller/httpsrv"
 	"github.com/0x16F/cloud-users/internal/controller/httpsrv/handlers/users"
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 const (
 	HTTPServerDef = "http_server"
 )
 
-func getHTTPServerDef() di.Def {
-	return di.Def{
+func getHTTPServerDef() *di.Def {
+	return &di.Def{
 		Name:  HTTPServerDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {

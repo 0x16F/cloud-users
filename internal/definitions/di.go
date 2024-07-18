@@ -1,16 +1,16 @@
 package definitions
 
 import (
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 func New() (di.Container, error) {
-	builder, err := di.NewBuilder()
+	builder, err := di.NewEnhancedBuilder()
 	if err != nil {
-		return nil, err
+		return di.Container{}, err
 	}
 
-	if err := builder.Add([]di.Def{
+	if err := addDef(builder,
 		getContextDef(),
 		getConfigDef(),
 		getLoggerDef(),
@@ -28,9 +28,19 @@ func New() (di.Container, error) {
 		getHTTPServerDef(),
 		getUsersHandlerDef(),
 		getFeaturesServiceDef(),
-	}...); err != nil {
-		return nil, err
+	); err != nil {
+		return di.Container{}, err
 	}
 
-	return builder.Build(), nil
+	return builder.Build()
+}
+
+func addDef(builder *di.EnhancedBuilder, defs ...*di.Def) error {
+	for _, def := range defs {
+		if err := builder.Add(def); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

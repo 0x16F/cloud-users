@@ -6,15 +6,15 @@ import (
 	"github.com/0x16F/cloud-users/internal/infrastructure/repo"
 	"github.com/0x16F/cloud-users/internal/usecase/config"
 	"github.com/0x16F/cloud-users/internal/usecase/migrations"
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 const (
 	DatabaseDef = "database"
 )
 
-func getDatabaseDef() di.Def {
-	return di.Def{
+func getDatabaseDef() *di.Def {
+	return &di.Def{
 		Name:  DatabaseDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
