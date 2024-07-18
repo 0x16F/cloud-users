@@ -7,7 +7,7 @@ import (
 	"github.com/0x16F/cloud-users/internal/usecase/errors"
 	"github.com/0x16F/cloud-users/internal/usecase/fflags"
 	usersService "github.com/0x16F/cloud-users/internal/usecase/users"
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 const (
@@ -15,8 +15,8 @@ const (
 	FeaturesServiceDef = "features_service"
 )
 
-func getUsersHandlerDef() di.Def {
-	return di.Def{
+func getUsersHandlerDef() *di.Def {
+	return &di.Def{
 		Name:  UsersHandlerDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
@@ -30,8 +30,8 @@ func getUsersHandlerDef() di.Def {
 	}
 }
 
-func getFeaturesServiceDef() di.Def {
-	return di.Def{
+func getFeaturesServiceDef() *di.Def {
+	return &di.Def{
 		Name:  FeaturesServiceDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {

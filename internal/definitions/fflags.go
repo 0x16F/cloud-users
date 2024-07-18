@@ -5,7 +5,7 @@ import (
 	"github.com/0x16F/cloud-common/pkg/logger"
 	"github.com/0x16F/cloud-users/internal/usecase/config"
 	gofeatureflag "github.com/open-feature/go-sdk-contrib/providers/go-feature-flag/pkg"
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 const (
@@ -13,8 +13,8 @@ const (
 	FFlagsProviderDef = "fflags_provider"
 )
 
-func getFFlagsProviderDef() di.Def {
-	return di.Def{
+func getFFlagsProviderDef() *di.Def {
+	return &di.Def{
 		Name:  FFlagsProviderDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
@@ -30,8 +30,8 @@ func getFFlagsProviderDef() di.Def {
 	}
 }
 
-func getFFlagsClientDef() di.Def {
-	return di.Def{
+func getFFlagsClientDef() *di.Def {
+	return &di.Def{
 		Name:  FFlagsClientDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {

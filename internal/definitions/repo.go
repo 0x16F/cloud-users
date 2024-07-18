@@ -5,15 +5,15 @@ import (
 
 	"github.com/0x16F/cloud-users/internal/infrastructure/repo/users"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/sarulabs/di"
+	"github.com/sarulabs/di/v2"
 )
 
 const (
 	UsersRepoDef = "users_repo"
 )
 
-func getUsersRepoDef() di.Def {
-	return di.Def{
+func getUsersRepoDef() *di.Def {
+	return &di.Def{
 		Name:  UsersRepoDef,
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
